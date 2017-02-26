@@ -9,7 +9,7 @@ public:
 //    Foo();
     Foo(int inVal) = delete;
 //    Foo(int inVal, int inVal2){}
-    explicit Foo(int inVal = 0, int inVal2 = 0){}
+    Foo(int inVal = 0, int inVal2 = 0){}
 //    Foo(const Foo&){}
 //    Foo(Foo&&){}
 };
@@ -22,7 +22,6 @@ bool ifDeclaredCTORMove();
 
 int main()
 {
-    Foo temp = Foo(1, 2);
     std::cout << std::boolalpha << " If compiler generates ctor default: " << std::is_trivially_constructible<Foo>::value << "\n";
     std::cout << std::boolalpha << " If compiler generates ctor copy: " << std::is_trivially_constructible<Foo, const Foo&>::value << "\n";
     std::cout << std::boolalpha << " If compiler generates ctor move: " << std::is_trivially_constructible<Foo, Foo&&>::value << "\n";
